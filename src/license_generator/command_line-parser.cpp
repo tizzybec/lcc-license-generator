@@ -136,7 +136,7 @@ static void issueLicense(const po::parsed_options &parsed, po::variables_map &vm
 		 " If not specified the license won't be linked to a specific pc.")  //
 		(PARAM_LICENSE_OUTPUT ",o", po::value<string>(&license_name),
 		 "License output file name. May contain / that will be interpreded as subfolders.")  //
-		(PARAM_PRODUCT_NAME ",n", po::value<boost::optional<std::string>>(),
+		(PARAM_PRODUCT_NAME ",n", po::value<std::string>(),
 		 "Product name (in case it doesn't correspond with project name).")  //
 		(PARAM_PRIMARY_KEY, po::value<string>(), "Primary key location, in case it is not in default folder")  //
 		(PARAM_PROJECT_FOLDER ",p", po::value<string>(&project_folder)->default_value("."),
@@ -156,8 +156,6 @@ static void issueLicense(const po::parsed_options &parsed, po::variables_map &vm
 			auto &value = it.second.value();
 			if (auto v = boost::any_cast<std::string>(&value)) {
 				license.add_parameter(it.first, *v);
-			} else {
-				std::cout << it.first << "not recognized value error" << endl;
 			}
 		}
 		try {
