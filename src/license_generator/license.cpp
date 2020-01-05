@@ -122,7 +122,7 @@ void License::write_license() {
 			}
 		}
 		const string lic_path_str = license_name.string();
-		license_stream.open(lic_path_str.c_str(), ios::trunc | ios::binary);
+		license_stream.open(lic_path_str.c_str(), ios::app | ios::binary);
 		if (!license_stream.is_open()) {
 			throw runtime_error("Can not create file [" + lic_path_str + "].");
 		}
